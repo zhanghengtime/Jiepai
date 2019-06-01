@@ -10,6 +10,7 @@ import re
 def get_page(offset):
     params = {
         'aid': '24',
+        'app_name':'web_search',
         'offset': offset,
         'format': 'json',
         #'keyword': '街拍',
@@ -40,10 +41,8 @@ def get_images(json):
             title = item.get('title')
             images = item.get('image_list')
             for image in images:
-                origin_image = re.sub("list", "origin", image.get('url'))
                 yield {
-                    'image':  origin_image,
-                    # 'iamge': image.get('url'),
+                    'iamge': image.get('url'),
                     'title': title
                 }
 
